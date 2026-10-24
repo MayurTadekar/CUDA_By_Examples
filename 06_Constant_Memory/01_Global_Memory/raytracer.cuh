@@ -9,9 +9,9 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 
-#define DIMENSION 1024
+#define DIMENSION 1024 * 2
 #define INF 2e10f
-#define SPHERES 20
+#define SPHERES 1000
 
 struct Sphere
 {

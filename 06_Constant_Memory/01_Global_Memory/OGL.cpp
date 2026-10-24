@@ -404,12 +404,12 @@ int initialize(void)
 
 	printGLInfo();
 
-	glGetIntegerv(GL_NUM_EXTENSIONS, &extensionCounts);
-	LOG_ENTRY_WITH_PARAM("log.txt", "Extension Counts: %d", extensionCounts);
-	for (int le = 0; le < extensionCounts; le++)
-	{
-		LOG_ENTRY_WITH_PARAM("log.txt", "%s\n", glGetStringi(GL_EXTENSIONS, le));
-	}
+	// glGetIntegerv(GL_NUM_EXTENSIONS, &extensionCounts);
+	// LOG_ENTRY_WITH_PARAM("log.txt", "Extension Counts: %d", extensionCounts);
+	// for (int le = 0; le < extensionCounts; le++)
+	// {
+	// 	LOG_ENTRY_WITH_PARAM("log.txt", "%s\n", glGetStringi(GL_EXTENSIONS, le));
+	// }
 
 	// Vertex Shader
 	const GLchar *vertexShaderSourceCode =
@@ -651,20 +651,20 @@ int initialize(void)
 // 	}
 // }
 
-void MakeCheckImageGPU()
+void MakeRaytracerImageGPU()
 {
 	// Code
 	unsigned char *dev_imageMemory = NULL;
 	Sphere *dev_spheres = NULL;
 	cudaEvent_t start, stop;
 
-	// CHECKCUDAERROR("MakeCheckImageGPU()", cudaEventCreate(&start));
-	// CHECKCUDAERROR("MakeCheckImageGPU()", cudaEventCreate(&stop));
-	// CHECKCUDAERROR("MakeCheckImageGPU()", cudaEventRecord(start, 0));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventCreate(&start));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventCreate(&stop));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventRecord(start, 0));
 
-	CHECKCUDAERROR("MakeCheckImageGPU()", cudaMalloc((void **)&dev_imageMemory, DIMENSION * DIMENSION * 4 * sizeof(unsigned char)));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaMalloc((void **)&dev_imageMemory, DIMENSION * DIMENSION * 4 * sizeof(unsigned char)));
 
-	CHECKCUDAERROR("MakeCheckImageGPU()", cudaMalloc((void **)&dev_spheres, SPHERES * sizeof(Sphere)));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaMalloc((void **)&dev_spheres, SPHERES * sizeof(Sphere)));
 
 	Sphere *temp_s = (Sphere *)malloc(sizeof(Sphere) * SPHERES);
 
@@ -679,7 +679,7 @@ void MakeCheckImageGPU()
 		temp_s[le].radius = rnd(100.0f) + 20;
 	}
 
-	CHECKCUDAERROR("MakeCheckImageGPU()", cudaMemcpy(dev_spheres, temp_s, SPHERES * sizeof(Sphere), cudaMemcpyHostToDevice));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaMemcpy(dev_spheres, temp_s, SPHERES * sizeof(Sphere), cudaMemcpyHostToDevice));
 
 	if (temp_s)
 	{
@@ -691,7 +691,18 @@ void MakeCheckImageGPU()
 	dim3 threads(16, 16);
 	kernelInterface(dev_imageMemory, dev_spheres, blocks, threads);
 
-	CHECKCUDAERROR("MakeCheckImageGPU()", cudaMemcpy(checkImage, dev_imageMemory, DIMENSION * DIMENSION * 4 * sizeof(unsigned char), cudaMemcpyDeviceToHost));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaMemcpy(checkImage, dev_imageMemory, DIMENSION * DIMENSION * 4 * sizeof(unsigned char), cudaMemcpyDeviceToHost));
+
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventRecord(stop, 0));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventSynchronize(stop));
+
+	float elapsedTime;
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventElapsedTime(&elapsedTime, start, stop));
+	
+	LOG_ENTRY_WITH_PARAM("log.txt", "MakeRaytracerImageGPU(): Time to generate: %3.1f ms\n", elapsedTime);
+
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventSynchronize(stop));
+	CHECKCUDAERROR("MakeRaytracerImageGPU()", cudaEventSynchronize(stop));
 
 	if (dev_imageMemory)
 	{
@@ -714,7 +725,7 @@ int LoadTexture(void)
 
 	//  CODE
 	// MakeCheckImage();
-	MakeCheckImageGPU();
+	MakeRaytracerImageGPU();
 	glGenTextures(1, &tex_Checker);
 	glBindTexture(GL_TEXTURE_2D, tex_Checker);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);

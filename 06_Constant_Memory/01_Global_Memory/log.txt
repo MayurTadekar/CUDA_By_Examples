@@ -1,0 +1,16 @@
+LOG: Window Started Successfully
+
+LOG:  Entered Resize().
+LOG:  Entered Initialize().
+INFO: OpenGL Renderer: NVIDIA GeForce RTX 4060/PCIe/SSE2
+INFO: OpenGL Version: 4.6.0 NVIDIA 621.01
+INFO: GLSL Version: 4.60 NVIDIA
+INFO: GLEW Version: 2.3.1
+INFO: MakeRaytracerImageGPU(): Time to generate: 34.3 ms
+
+LOG:  Entered Resize().
+LOG:  Exit Initialize().
+LOG: Initialize() Completed Successfully
+
+LOG: Program Terminated Successfully...
+
