@@ -1,0 +1,117 @@
+Devices Found = 1
+    === General Information For Device Found at 0 ===  
+
+=== Device Properties ===
+
+=== Identity ===
+name:                          NVIDIA GeForce RTX 4060
+uuid:                          ffffffa439ffffffee7bffffffa5ffffffbcffffff874effffff85626bffffffabffffffa42d5dffffff9c
+luid:                          ffffffee03010000000000
+luidDeviceNodeMask:            0x00000001
+
+=== Memory ===
+totalGlobalMem:                8585216000 bytes - 8384000.00 KB - 8187.50 MB - 8.00 GB
+sharedMemPerBlock:             49152 bytes - 48.00 KB - 0.05 MB - 0.00 GB
+sharedMemPerMultiprocessor:    102400 bytes - 100.00 KB - 0.10 MB - 0.00 GB
+sharedMemPerBlockOptin:        101376 bytes - 99.00 KB - 0.10 MB - 0.00 GB
+reservedSharedMemPerBlock:     1024 bytes - 1.00 KB - 0.00 MB - 0.00 GB
+totalConstMem:                 65536 bytes - 64.00 KB - 0.06 MB - 0.00 GB
+memPitch:                      2147483647 bytes - 2097152.00 KB - 2048.00 MB - 2.00 GB
+memoryBusWidth:                128 bits
+l2CacheSize:                   25165824 bytes
+persistingL2CacheMaxSize:      17301504 bytes
+
+=== Compute ===
+compute capability:            8.9
+SMs: 24, Cores/SM: 128, Total CUDA Cores: 3072
+multiProcessorCount:           24
+maxThreadsPerBlock:            1024
+maxThreadsPerMultiProcessor:   1536
+maxBlocksPerMultiProcessor:    24
+warpSize:                      32
+regsPerBlock:                  65536
+regsPerMultiprocessor:         65536
+asyncEngineCount:              1
+
+=== Grid/Block dimensions ===
+maxThreadsDim:                 [1024, 1024, 64]
+maxGridSize:                   [2147483647, 65535, 65535]
+
+=== Texture limits ===
+maxTexture1D:                  131072
+maxTexture1DMipmap:            32768
+maxTexture2D:                  [131072, 65536]
+maxTexture2DMipmap:            [32768, 32768]
+maxTexture2DLinear:            [131072, 65000, 2097120]
+maxTexture2DGather:            [32768, 32768]
+maxTexture3D:                  [16384, 16384, 16384]
+maxTexture3DAlt:               [8192, 8192, 32768]
+maxTextureCubemap:             32768
+maxTexture1DLayered:           [32768, 2048]
+maxTexture2DLayered:           [32768, 32768, 2048]
+maxTextureCubemapLayered:      [32768, 2046]
+textureAlignment:              512
+texturePitchAlignment:         32
+
+=== Surface limits ===
+maxSurface1D:                  32768
+maxSurface2D:                  [131072, 65536]
+maxSurface3D:                  [16384, 16384, 16384]
+maxSurface1DLayered:           [32768, 2048]
+maxSurface2DLayered:           [32768, 32768, 2048]
+maxSurfaceCubemap:             32768
+maxSurfaceCubemapLayered:      [32768, 2046]
+surfaceAlignment:              512
+
+=== PCI / Topology ===
+pciBusID:                      1
+pciDeviceID:                   0
+pciDomainID:                   0
+gpuPciDeviceID:                0x288210de
+gpuPciSubsystemID:             0x410b1458
+tccDriver:                     0
+integrated:                    0
+isMultiGpuBoard:               0
+multiGpuBoardGroupID:          0
+
+=== NUMA ===
+deviceNumaConfig:              0
+deviceNumaId:                  -1
+hostNumaId:                    0
+hostNumaMultinodeIpcSupported: 0
+
+=== Features (0/1 flags) ===
+ECCEnabled:                    0
+unifiedAddressing:             1
+canMapHostMemory:              1
+concurrentKernels:             1
+streamPrioritiesSupported:     1
+globalL1CacheSupported:        1
+localL1CacheSupported:         1
+managedMemory:                 1
+hostNativeAtomicSupported:     0
+pageableMemoryAccess:          0
+pageableMemoryAccessUsesHostPageTables: 0
+concurrentManagedAccess:       0
+computePreemptionSupported:    1
+canUseHostPointerForRegisteredMem: 0
+cooperativeLaunch:             1
+directManagedMemAccessFromHost: 0
+hostRegisterSupported:         1
+hostRegisterReadOnlySupported: 1
+sparseCudaArraySupported:      1
+deferredMappingCudaArraySupported: 1
+timelineSemaphoreInteropSupported: 1
+memoryPoolsSupported:          1
+gpuDirectRDMASupported:        0
+gpuDirectRDMAWritesOrdering:   0
+gpuDirectRDMAFlushWritesOptions: 0x00000000
+memoryPoolSupportedHandleTypes: 0x00000002
+ipcEventSupported:             1
+clusterLaunch:                 0
+unifiedFunctionPointers:       0
+mpsEnabled:                    0
+accessPolicyMaxWindowSize:     134213632 bytes
+    === === === ===
+
+ID of CUDA Capable Device = 0
